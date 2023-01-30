@@ -1,0 +1,29 @@
+<header class="pb-3">
+    <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start bg-light rounded p-3 mb-4 border-bottom">
+        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+            <li class="nav-item"><a href="{{ url('homepage.index') }}" class="nav-link">Home</a></li>
+            <li class="nav-item"><a href="{{ url('product.index') }}" class="nav-link">Products</a></li>
+            <li class="nav-item"><a href="{{ url('category.index') }}" class="nav-link">Categories</a></li>
+            <li class="nav-item"><a href="{{ url('contact.index') }}" class="nav-link">Contact</a></li>
+        </ul>
+
+        <form action="{{ url('search.index') }}" class="d-flex" role="search">
+            <input name="searchValue" class="form-control me-2" type="search" placeholder="Search..." aria-label="Search">
+            <button class="btn btn-outline-info" type="submit">Search</button>
+        </form>
+
+        <div class="text-end ms-5">
+            {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                {% if is_granted('ROLE_ADMIN') %}
+                    <a href="{{ url('admin.homepage.index') }}" class="btn btn-outline-primary me-2">Administration</a>
+                {% else %}
+                    <a href="{{ url('profile.homepage.index') }}" class="btn btn-outline-primary me-2">Profile</a>
+                {% endif %}
+                <a href="{{ url('security.logout') }}" class="btn btn-outline-danger">Logout</a>
+            {% else %}
+                <a href="{{ url('security.login') }}" class="btn btn-primary me-2">Login</a>
+                <a href="{{ url('registration.register') }}" class="btn btn-outline-success">Sign-up</a>
+            {% endif %}
+        </div>
+    </div>
+</header>

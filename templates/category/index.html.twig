@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Store | Categories{% endblock %}
+
+{% block body %}
+    <h1>Categories</h1>
+    <br>
+    {% for categoryInfos in categoriesInfos %}
+        <a href="{{ url('category.products', {slug: categoryInfos.category_slug}) }}" class="btn btn-light">
+            {{ categoryInfos.category_name }} <span class="badge text-bg-secondary">{{ categoryInfos.numberOfProducts }}</span>
+        </a>
+    {% endfor %}
+{% endblock %}

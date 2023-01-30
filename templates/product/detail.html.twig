@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Store | Product {{ product.name }}{% endblock %}
+
+{% block body %}
+    <h1>{{ product.name }}</h1>
+    <br>
+    <img src="{{ asset('images/products/' ~ product.image) }}" alt="{{ product.name }}" height="250px" width="auto">
+    <p>{{ product.price }} €</p>
+    <p>{{ product.description }}</p>
+{% endblock %}

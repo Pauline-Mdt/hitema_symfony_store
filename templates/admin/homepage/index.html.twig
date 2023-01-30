@@ -1,0 +1,9 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Store | Admin - Dashboard{% endblock %}
+
+{% block body %}
+    <h1>Administration</h1>
+    <br>
+    <a href="{{ url('admin.product.index') }}" class="btn btn-dark">Voir la liste des produits</a>
+{% endblock %}

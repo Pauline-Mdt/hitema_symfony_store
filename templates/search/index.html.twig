@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Store | Search result{% endblock %}
+
+{% block body %}
+    {% for item in app.flashes('message') %}
+        <p>{{ item }}</p>
+    {% endfor %}
+
+    <h1>Recherche : {{ searchValue }}</h1>
+    <br>
+    {% if products is empty %}
+        <p>Malheureusement, il n'y a pas de produits correspondant à votre recherche.</p>
+    {% else %}
+        <div class="row row-cols-1 row-cols-md-4 g-4">
+            {% for product in products %}
+                <div class="col">
+                    <div class="card" style="width: 15rem;">
+                        <img src="{{ asset('images/products/' ~ product.image) }}" alt="{{ product.name }}" height="auto" width="auto" class="card-img-top">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ product.name }}</h5>
+                            <p class="card-text">{{ product.price }} €</p>
+                            <a href="{{ url('product.detail', {slug: product.slug}) }}" class="btn btn-primary">Consulter</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+{% endblock %}

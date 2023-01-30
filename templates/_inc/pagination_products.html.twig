@@ -1,0 +1,17 @@
+<nav aria-label="Page navigation example">
+    <ul class="pagination justify-content-center">
+        <li class="page-item">
+            <a class="page-link" href="#" aria-label="Previous">
+                <span aria-hidden="true">&laquo;</span>
+            </a>
+        </li>
+        {% for number in 1..(numberOfProducts/12)|round(0, 'ceil') %}
+            <li class="page-item"><a class="page-link" href="{{ url('product.index', {pageNumber: number}) }}">{{ number }}</a></li>
+        {% endfor %}
+        <li class="page-item">
+            <a class="page-link" href="#" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+            </a>
+        </li>
+    </ul>
+</nav>
